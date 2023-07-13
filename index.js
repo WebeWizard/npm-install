@@ -29,6 +29,7 @@ const getInputBool = (name, defaultValue = false) => {
 
 const restoreCachedNpm = npmCache => {
   console.log('trying to restore cached NPM modules')
+  console.log(npmCache.inputPaths)
   return cache
     .restoreCache(
       npmCache.inputPaths.slice(), // temp work around for https://github.com/actions/toolkit/pull/1378
@@ -48,7 +49,7 @@ const restoreCachedNpm = npmCache => {
 
 const saveCachedNpm = npmCache => {
   console.log('saving NPM modules')
-
+  console.log(npmCache.inputPaths)
   return cache
     .saveCache(npmCache.inputPaths.slice(), npmCache.primaryKey)
     .catch(err => {
